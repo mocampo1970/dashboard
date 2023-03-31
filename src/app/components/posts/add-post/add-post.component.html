@@ -1,0 +1,109 @@
+<div class="row" id="add-post">
+    <div class="col-12">
+  
+        <!-- titulo -->
+        <div class="row no-gutters mb-4">
+            <div class="col-12 border-bottom pl-0 pb-2">
+            <span class="title-section">{{'label.add.post' | translate}}</span>
+            </div>
+        </div>
+  
+        <div class="row">
+            <div class="col-12">
+                <form #form="ngForm" (ngSubmit)="addPost()">
+                    <div class="row form-group">
+                        <!-- campo titulo que es title-->
+                        <div class="col-12 mt-4 mb-4">
+                            <label for="title">{{'label.title' | translate}}</label>
+                            <input type="text" class="form-control" id="title" required #title="ngModel" name="title"
+                            [(ngModel)]="post.title"
+                            [ngClass]="{'is-valid': title.dirty && !title.errors, 'is-invalid': title.dirty && title.errors}">
+
+                            <div class="valid-feedback">
+                                <span>{{'label.success' | translate}}</span>
+                            </div>
+                            <div class="invalid-feedback">
+                                <span *ngIf="title.errors?.required">{{'label.required' | translate}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="row form-group">
+                        <div class="col-md-9 col-12 mb-4">
+                          
+                            <!-- No vamos a utilizar kolkov que es un editor lo voy a hacer con textarea -->
+                            <!-- campo de comentarios -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <!-- Como no vamos a utilizar kolkov lo comentariamos -->
+                                    <!--<angular-editor name="html" [config]="config" [(ngModel)]="post.content"></angular-editor>-->
+                                    <!-- este campo no lo estaba grabando en la BD porque no tenia el ngModel apuntando al campo -->
+                                    <textarea name="comentarios" rows="10" cols="40" [(ngModel)]="post.content">Escribe aquí tus comentarios</textarea>
+                                    
+                                </div>
+                            </div>
+
+                            <!-- Aqui va ir la categoria, se va a crear un widget aunque mirando se puede 
+                                 hacer por aqui tambien con un ngFor recuperando las categorias, pero 
+                                 vamos a hacerla como dice el profe. -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <select name="categoria">
+                                        <!--<option *ngFor="let category of categories">{{category.descripcion}}</option>-->
+                                    </select>
+                                </div>
+                            </div>
+                      
+                            <!-- Boton guardar -->
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">{{'label.save' | translate}}</button>
+                                </div>
+                            </div>
+            
+                        </div>
+            
+                        <div class="col-md-3 col-12 mb-4">
+                          
+                            <!-- categoria-->
+                            <div class="row">
+                                <div class="col-12">
+                                    <!-- Select categoria (select)="getCategories($event)" -->
+                                    <app-widget-select-category (select)="getCategories($event)"></app-widget-select-category>                                    
+                                </div>
+                            </div>
+            
+                            <!-- Imagen -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <!--app-widget-upload-thumbnail (sendPath)="getPath($event)"></app-widget-upload-thumbnail>-->
+                                    <app-widget-upload-thumbnail (select)="getCategories($event)"></app-widget-upload-thumbnail>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>    
+        </div>                
+    </div>
+</div>
+
+<!-- Templates se arma digitando ng-template, se abre y se cierra la etiqueta
+       posteriormente se digita b4-modal y enter y abre una plantilla con el modal, luego
+       lo cortamos y dejamos solo header y body. Y este
+       modal_add_post debe estar creado en el ts como viewChild -->
+<ng-template #modal_add_post let-modal>
+
+    <div class="modal-header">
+        <h5 class="modal-title">{{'label.success' | translate}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        {{'label.success.post.category' | translate}}
+    </div>
+
+</ng-template>

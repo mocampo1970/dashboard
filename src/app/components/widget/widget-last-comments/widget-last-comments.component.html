@@ -1,0 +1,37 @@
+<!-- se marca como herencia del app-widget que es el widget.component que en el selector se llama
+     app-widget. Adicional este selector de esta que esta en la ts va a resume.component.html
+     que es como la plantilla base donde van los widget -->
+<!-- Zona heredable desde el padre -->
+<app-widget>
+    <span title-widget>{{'label.last.comments' | translate}}</span>
+
+    <div content-widget>
+        <!-- Si NO hay comentarios, busco el largo del arreglo  -->        
+        <div class="row" *ngIf="comments.length === 0">
+            <div class="col-12">
+                {{'label.no.comment' | translate}}
+            </div>
+        </div>
+
+        <!-- Si hay comentarios  -->
+        <div class="row" *ngIf="comments.length > 0">
+            <div class="col-12">
+                <!-- Se concatena el usuario con la fecha y adicional el ngclass se usa
+                     para colocar colores a las filas pares e impares en el widget.last.comments.css.
+                     Nota: aqui tuve error al ppio porque el div *ngFor lo cerraba al final de esa
+                        misma linea y cuando le colocaba comment.user   -->
+                <div *ngFor="let comment of comments;let impar = odd;let par = even;" [ngClass]="{azul:par,verde:impar}">
+                    <p>{{comment.user + ' ('+ (comment.fecha | date:'dd/MM/yyyy') +')' + ' - ' + comment.post }}</p>
+                    <p>{{comment.text}}</p>
+                    <!-- Hr Pone como una linea entre cada registro -->
+                    <hr>
+                </div>        
+            </div>
+        </div>
+    </div>
+
+  <!-- Zona heredable desde el padre -->
+  <span footer-widget>{{'label.info.widget.comments' | translate}}</span>    
+
+</app-widget>
+

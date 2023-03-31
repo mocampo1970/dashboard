@@ -1,0 +1,15 @@
+<!-- este es como la VENTANA BASE de la derecha donde dependiendo cual se selecciona la abre, por ejm
+     si se presiona el icono resumen abre resumen, si se presiona el cicono post abre post.
+     Para ese se le coloca el router-outlet y esta es llamada desde el 
+     app.component.html junto al sidebar que es la ventana izquierda -->
+<div class="row" id="dashboard">
+    <div class="col-12">
+        <!-- Se coloca este para que cuando presiona el resume muestre el resume en vez del
+             dashboard, con el posts lo mismo, desde donde se llaman del sidebar -->
+        <router-outlet></router-outlet>
+    </div>
+    <!-- desde aqui funciona llamar el signin desde el login no-->
+    <!--<button type="button" name="button" class="btn btn-primary" 
+    [routerLink]="['/signin/']">ir
+    </button>-->
+</div>

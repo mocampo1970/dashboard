@@ -1,0 +1,37 @@
+<!-- Se crea con b4-card-fefault y el arma toda la estructura este widget es como un padre y de ahi
+     vamos a desprender varios hijos.
+     Padre lo que esta dentro de [] es como lo voy a llamar en el/los hijo(s), osea el titulo
+     el content y el footer. Este no se llama desde ninguno, es simplemente un base para que lo tomen los hijos
+     wiget-stadicts, widget-last-coments y widget-last-visits -->
+<div class="card mb-4">
+
+    <!-- body padre y este body tiene un title y un texto -->  
+    <div class="card-body">
+
+        <h4 class="card-title">
+        <!-- Marco esta zona como heredable -->
+        <!-- Vamos a ingresar un ng-content, este select en el title lo van a utilizar los hijos, mirar por ejm
+             el widget-last-comment.html o el widget-last-visits.html utilizan en title-widget y 
+             el content-widget y el footer-widget -->
+            <ng-content select="[title-widget]"></ng-content>
+            <hr/>
+        </h4>
+        <div class="card-text">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Marco esta zona como heredable -->
+                    <!-- Vamos a ingresar un ng-content, este select en el title 
+                        lo van a utilizar los hijos -->                      
+                    <ng-content select="[content-widget]"></ng-content>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer padre -->    
+    <div class="card-footer">
+      <i class="fa fa-info-circle mr-1"></i>
+      <!-- Marco esta zona como heredable -->
+      <ng-content select="[footer-widget]"></ng-content>
+    </div>
+</div>

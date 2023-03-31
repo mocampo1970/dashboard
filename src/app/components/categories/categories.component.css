@@ -1,0 +1,5 @@
+/* esto del ng-deep es para que coja como el padre porque este esta dentro de un padre y coja bien
+   el tamaño */
+#categories ::ng-deep .p-column-title{
+    width: 90px
+}

@@ -1,0 +1,43 @@
+<!-- se marca como herencia del app-widget que es el widget.component que en el selector se llama
+     app-widget. Adicional este selector de esta que esta en la ts va a resume.component.html
+     que es como la plantilla base donde van los widget, esta se va a utilizar en add-post -->
+<!-- Zona heredable desde el padre -->
+<app-widget>
+
+    <span title-widget>{{'label.categories' | translate}}</span>
+
+    <!-- Si categories.length = 0 muestra mensaje, y despues esta el for de categories tambien es
+          zona heredable desde el padre -->
+    <div content-widget>
+        <!-- Mensaje cuando no hay categorias -->
+        <div class="row" *ngIf="categories.length === 0">
+            <div class="col-12">
+                <span>{{'label.no.categories' | translate}}</span>
+            </div>
+        </div>
+
+        <!-- Muestra las categorias -->
+        <!-- Ese categories lo recuperamos en el ts -->
+        <ng-container>
+            <div class="row" *ngFor="let category of categories">
+                <div class="col-12">
+                        <!--<p-checkbox name="category" [value]="category.id" [(ngModel)]="selectedCategories"
+                          (onChange)="sendCategories()" [label]="category.nombre"></p-checkbox>-->
+
+                        <!-- Este es el original -->
+                        <!--<input name="category" type="checkbox" [value]="category.id" [(ngModel)]="selectedCategories"
+                        (onChange)="sendCategories()" />{{category.descripcion}}-->
+
+                        <!-- Si le quitamos el [(ngModel)]="selectedCategories checkea bien los 
+                             checkbox -->    
+                        <input name="category" type="checkbox" [value]="category.id" 
+                        (onChange)="sendCategories()" />{{category.descripcion}}
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+
+    <span footer-widget>{{'label.info.widget.categories' | translate}}</span>
+
+</app-widget>

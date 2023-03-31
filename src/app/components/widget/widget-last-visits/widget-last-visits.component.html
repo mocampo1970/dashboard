@@ -1,0 +1,20 @@
+<!-- se marca como herencia del app-widget que es el widget.component que en el selector se llama
+     app-widget. Adicional este selector de esta que esta en la ts va a resume.component.html
+     que es como la plantilla base donde van los widget -->
+<!-- Zona heredable desde el padre -->     
+<app-widget>
+
+    <span title-widget>{{'label.last.visits' | translate}}</span>
+
+    <!-- Aqui va ir la grafica-->
+    <div content-widget>
+        <!-- se crea de acuerdo a la documentación y data y options se crea en el ts -->
+
+        <!-- Me esta sacando error por eso lo comentarie -->
+        <!--<p-chart type="line" [data]="data" [options]="options"></p-chart>-->
+    </div>
+
+    <span footer-widget>{{'label.info.widget.visits' | translate}}</span>
+
+</app-widget>
+

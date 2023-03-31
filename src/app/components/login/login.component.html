@@ -1,0 +1,94 @@
+<!-- Le colocamos un id para identificarlo en en css y en el ts
+     mt-4 mb-4 es para separar -->
+<div class="row mt-4 mb-4" id="login">
+    <div class="col-12">
+
+        <div class="row">
+            <div class="col-12">
+                <h1>Bienvenidos</h1>
+            </div>
+            <div class="col-12">
+                <hr>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-12 text-center">
+                <!-- Imagen del sitio -->
+                <!--<img width=75 [src]="config.logoLogin">-->
+                <!-- Nombre del sitio -->
+                <!--<span class="h1 ml-2">{{config.nameSite}}</span>-->
+            </div>
+        </div>
+
+        <!-- Si hay un error lo muestra arriba 
+             COMPRUEBA EMAIL Y CONTRASEÑA -->
+        <div class="row" *ngIf="showLoginError">
+            <div class="col-12">
+                <div class="alert alert-danger" role="alert">
+                    <strong>{{'label.login.error' | translate}}</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+
+                <form #form="ngForm" (ngSubmit)="login()">
+                    <!-- Email, despues de crear la interfaz iLogin y definirla en el ts aqui creamos el
+                         ngModel  -->
+                    <div class="row form-group">
+                        <div class="col-12">
+                            <label for="email">{{'label.email' | translate}}</label>
+                            <input type="email" class="form-control" id="email" [(ngModel)]="infoLogin.email"
+                                name="email" required="required">
+                        </div>
+                    </div>
+
+                    <!-- Password despues de crear la interfaz iLogin y definirla en el ts aqui creamos el
+                         ngModel -->
+                    <div class="row form-group">
+                        <div class="col-12">
+                            <label for="password">{{'label.pass' | translate}}</label>
+                            <input type="password" class="form-control" id="password" [(ngModel)]="infoLogin.password"
+                                name="pass" required="required">
+                        </div>
+                    </div>
+
+                    <!-- Boton login -->
+                    <div class="row form-group">
+                        <div class="col-12">
+                            <button [disabled]="form.invalid" type="submit"
+                                class="btn btn-success btn-primary float-right">{{'label.login' | translate}}</button>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <!-- Si existe error muestra en rojo abajo del boton-->
+                <div class="row" id="error" *ngIf="showLoginError">
+                    <label class="float-right">email o password incorrecto. Por favor verifique.</label>
+                </div>
+
+                <!-- el href de la palabra aqui-->
+                <div class="row" *ngIf="showLoginError">
+                    <div class="col-12">
+                        <label class="float-right">Si no tienes cuenta con nosotros por favor haz click <a href="#" (click)="crearCuenta()">aquí</a></label>
+                        <a routerLink='/signin'>Home</a>
+                        <br>
+                        <a [routerLink]="['/signin']">hola</a>
+                        <br>
+                        <a class="nav-link" routerLink="/posts">signin</a>
+                        <br>
+
+                        <button type="button" name="button" class="btn btn-primary" 
+                        [routerLink]="['/signin/']">ir este funciona desde el sidebar y desde el dashboard
+                        </button>                        
+                                    
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

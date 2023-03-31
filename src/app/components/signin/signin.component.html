@@ -1,0 +1,83 @@
+<!-- Le colocamos un id para identificarlo en en css y en el ts
+     mt-4 mb-4 es para separar -->
+     <div class="row mt-4 mb-4" id="login">
+        <div class="col-12">
+    
+            <div class="row">
+                <div class="col-12">
+                    <h1>Crear tu cuenta ahora</h1>
+                </div>
+                <div class="col-12">
+                    <hr>
+                </div>
+            </div>
+     
+            <div class="row">
+                <div class="col-12">
+    
+                    <form (ngSubmit)="crear()" id="crear">
+            
+                        <div class="row form-group">
+                            <div class="col-12">
+                                <input type="text" class="form-control" id="epellido" [(ngModel)]="usuario.apellidos"
+                                name="apellido" placeholder="Apellidos">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row form-group">
+                            <div class="col-12">
+                                <input type="text" class="form-control" id="nombre" [(ngModel)]="usuario.nombres"
+                                name="nombre" placeholder="Nombres">
+                            </div>
+                        </div> 
+                        <br>
+                        <div class="row form-group">
+                            <div class="col-12">
+                                <input type="text" class="form-control" id="usuario" [(ngModel)]="usuario.usuario"
+                                name="usuario" placeholder="Usuario">
+                            </div>
+                        </div>
+                        <br>                        
+                        <div class="row form-group">
+                            <div class="col-12">
+                                <input type="email" class="form-control" id="email" [(ngModel)]="usuario.email"
+                                name="email" placeholder="Email">
+                            </div>
+                        </div>                          
+                        <br>
+                        <div class="row form-group">
+                            <div class="col-12">
+                                <input type="password" class="form-control" id="password" [(ngModel)]="usuario.password"
+                                    name="pass">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row form-group">
+                            <div class="col-12">
+                                <input type="text" class="form-control" id="prioridad" [(ngModel)]="usuario.prioridad"
+                                    name="prioridad">
+                            </div>
+                        </div>
+                        <br>                        
+                        <!-- Boton login -->
+                        <div class="row form-group">
+                            <div class="col-12">
+                                <button type="submit"
+                                    class="btn btn-success btn-primary float-right">Crear</button>
+                                    <!--class="btn btn-success btn-primary float-right">{{'label.login' | translate}}</button>-->
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Regresa al inicio -->
+                    <div class="row">
+                        <div class="col-12">
+                            <label class="float-right"> <a href="#" (click)="regresar()">Regresar</a></label>
+                        </div>
+                    </div>                    
+    
+                </div>
+            </div>
+    
+        </div>
+    </div>

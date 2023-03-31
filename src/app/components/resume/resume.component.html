@@ -1,0 +1,32 @@
+<!-- Cuando se presiona resumen abre sobre el lado derecho estas y este componente tiene 3 asociados que son
+     widget-stadistics (estadisticas) 
+     widget-last-coments(ultimos comentarios), widget-last-visits (ultimas visitas) -->
+<div class="row">
+    <div class="col-12">
+
+        <!-- Titulo -->
+        <div class="row no-gutters">
+            <div class="col-12 border-bottom mb-4 pl-0 pb-2">
+                <!-- Como se va a utilizar en varias partes lo vamos a llevar a styles -->
+                <span class="title-section">{{'label.resume' | translate}}</span>
+            </div>
+        </div>
+
+        <!-- Widgets de estadisticas, comentarios y visitas -->
+        <div class="row no-gutters">
+            <div class="col-md-6 col-12 pr-md-2">
+                <app-widget-stadistics></app-widget-stadistics>
+            </div>
+            <div class="col-md-6 col-12 pl-md-2">
+                <app-widget-last-comments></app-widget-last-comments>
+            </div>
+        </div>
+
+        <div class="row no-gutters">
+            <div class="col-12">
+                <app-widget-last-visits></app-widget-last-visits>
+            </div>
+        </div>        
+
+    </div>
+</div>

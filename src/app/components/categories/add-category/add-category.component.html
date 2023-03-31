@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="col-12">
+
+    <!-- titulo -->
+    <div class="row no-gutters mb-4">
+      <div class="col-12 border-bottom pl-0 pb-2">
+        <span class="title-section">{{'label.add.category' | translate}}</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+
+        <!-- Debe ir dentro de un form para validar los campos y habilitar/deshabilitar botón.
+             Con este submit aqui arriba en la forma no hay necesidad de colocarle 
+             al boton de abajo (click)="guardar", porque es solo 1 boton y aqui con este 
+             submit se llama el metodo create() y el lo ejecuta-->
+        <form #form="ngForm" (ngSubmit)="create()">
+
+          <!-- Nombre categoria -->
+          <div class="row form-group">
+            <div class="col-12 mb-2">
+              <label for="name">{{'label.name.category' | translate}}</label>
+              <!-- Hace controles para colocar el campo valido y por ende el formulario, si 
+                     el formulario esta con errores deshabilita el boton de abajo-->
+              <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="category.nombre" required
+                [ngClass]="{'is-valid': name.dirty && !name.errors, 'is-invalid': name.dirty && name.errors}">
+
+              <div class="valid-feedback">
+                <span>{{'label.success' | translate}}</span>
+              </div>
+              <div class="invalid-feedback">
+                <span *ngIf="name.errors?.required">{{'label.required' | translate}}</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Descripcion categoria -->
+          <div class="row form-group">
+            <div class="col-12">
+              <label for="descripcion">{{'label.description.category' | translate}}</label>
+              <textarea name="descripcion" class="form-control is-valid" id="descripcion" name="descripcion"
+                #description="ngModel" [(ngModel)]="category.descripcion"></textarea>
+              <div class="valid-feedback">
+                <span>{{'label.success' | translate}}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Boton guardar -->
+          <div class="row form-group">
+            <div class="col-12">
+              <!-- Boton se deshabilita si la forma es invalida -->
+              <button type="submit" [disabled]="form.invalid" class="btn btn-primary">{{'label.save' |
+                translate}}</button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Templates se arma digitando ng-template, se abre y se cierra la etiqueta
+       posteriormente se digita b4-modal y enter y abre una plnatilla con el modal, luego
+       lo cortamos y dejamos solo header y body. Y este
+       modal_add_category debe estar creado en el ts como viewChild -->
+<ng-template #modal_add_category let-modal>
+
+  <div class="modal-header">
+    <h5 class="modal-title">{{'label.success' | translate}}</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    {{'label.success.add.category' | translate}}
+  </div>
+
+</ng-template>

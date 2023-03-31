@@ -1,0 +1,25 @@
+<!-- se marca como herencia del app-widget que es el widget.component que en el selector se llama
+     app-widget. Adicional este selector de esta que esta en la ts va a resume.component.html
+     que es como la plantilla base donde van los widget, esta se va a utilizar en add-post.html -->
+<!-- Zona heredable desde el padre -->
+
+<app-widget>
+    <span title-widget>{{'label.thumbnail' | translate}}</span>
+
+    <div content-widget>
+        <img class="img-fluid" [src]="img" *ngIf="img">
+        <!-- Se coloca file, mw-100 es para que no se salga y accept es para que suba solo ese 
+             tipo de archivos y el Input con type="file" como tal es para abrir el explorador de archivos  -->
+        <input type="file" class="mt-2 mw-100" accept=".png, .jpg" (change)="upLoadFile($event)">
+    </div>
+
+    <span footer-widget>{{'label.info.widget.thumbnail' | translate}}</span>
+
+</app-widget>
+
+<!-- Spinner -->
+<div class="h-100 overlay" *ngIf="!loadImg">
+    <div class="spinner">
+      <img src="assets/img/spinner.gif" alt="">
+    </div>
+</div>
